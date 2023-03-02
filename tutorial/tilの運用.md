@@ -5,5 +5,5 @@
 - [Markdown記法チートシート](https://gist.github.com/mignonstyle/083c9e1651d7734f84c99b8cf49d57fa#file-markdown-cheatsheet-md)
 - [Markdown,Qiita記事](https://qiita.com/Qiita/items/c686397e4a0f4f11683d)
 
-***リポジトリ内単語検索のコマンド***
+***リポジトリ内単語検索のコマンド***  
 `grep -r "<検索したい単語>" .`
