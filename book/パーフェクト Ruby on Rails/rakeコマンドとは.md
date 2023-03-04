@@ -5,3 +5,12 @@ makeコマンド風にタスクを実行するためのタスクランナー。
   
   
 
+#### Rakefile  
+ ```rb
+ desc 'Hello, Rake Task'
+task :hello do
+  puts 'Hello, Rake!'
+end
+```
+  
+
