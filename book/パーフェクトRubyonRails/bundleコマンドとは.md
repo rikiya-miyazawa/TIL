@@ -12,3 +12,31 @@ gemのバージョンや依存関係を解決した結果をGemfile.lockとし�
 <br>
 <br>
 
+#### よく使われるBundlerのサブコマンド  
+<br>
+
+***bundleGemfileに書かれているgemインストールのコマンド***  
+`bundle install`  
+<br>
+<br>
+
+***bundleインストール済みのgem更新のコマンド***  
+`bundle update <ライブラリ(gem)名>`  
+<br>
+<br>
+
+***bundleインストール済みのgem一覧表示のコマンド***  
+`bundle list`  
+<br>
+<br>
+
+***bundleGemfileを生成するコマンド***  
+`bundle init`  
+<br>
+<br>
+
+***bundleBundlerでインストールされているgemを使用してコマンドを実行するコマンド***  
+`bundle exec <コマンド名>`  
+<br>
+<br>
+
