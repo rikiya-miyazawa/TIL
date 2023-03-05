@@ -20,6 +20,7 @@ require 'date'
 
 now = DateTime.now
 puts now.strftime("%Y年%m月%d日 %H時%M分%S秒")
+#=> 2023年03月05日 16時40分23秒
 ```
 <br>
 <br>
