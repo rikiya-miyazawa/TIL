@@ -54,3 +54,13 @@ puts char
 #先頭から0,1,2,3バイト分読み込んだことになるので、変数charには3バイト分代入されている
 #最後に、ファイルを閉じる
 ```
+
+- file.closeを行わないとファイルが開きっぱなしになってしまう。  
+```rb
+#ブロックを用いることでブロック内で処理が終わると自動的にcloseメソッドが呼び出される
+File.open('file.txt', 'r') do |file|
+  file.seek(2, IO::SEEK_SET)
+  char = file.read(1)
+  puts char
+end
+```
