@@ -23,5 +23,5 @@ ope = "wakuwaku" == "waku" * 3 || "Rubyは楽しい"
 => "Rubyは楽しい"
 irb(main):002:0> puts ope
 Rubyは楽しい
-#左側がfalseなので右側が代入される。
+#||の左側がfalseなので右側が代入される。
 ```
