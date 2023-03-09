@@ -10,7 +10,13 @@
 
 - 例  
 ```rb
-
+text = "line1\nline2\nline3\n"
+text.each_line do |line|
+  puts line
+end
+#=> line1
+#=> line2
+#=> line3
 ```
 <br>
 <br>
