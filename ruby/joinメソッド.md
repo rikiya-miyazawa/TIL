@@ -10,13 +10,21 @@ Rubyの配列オブジェクトのインスタンスメソッドで、配列内�
 
 - 例1  
 ```rb
-text = "line1\nline2\nline3\n"
-text.each_line do |line|
-  puts line
-end
-#=> line1
-#=> line2
-#=> line3
+array = ["foo", "bar", "baz"]
+result = array.join(", ")
+puts result
+#=> foo, bar, baz
+```
+<br>
+<br>
+
+- 例2  
+```rb
+#引数に何も指定しないと配列の各要素は連結されずにそのまま結合される
+array = ["foo", "bar", "baz"]
+result = array.join
+puts result
+#=> foobarbaz
 ```
 <br>
 <br>
