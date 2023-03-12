@@ -62,3 +62,19 @@ p ary1.sort
 ```
 <br>
 <br>
+
+- 例6  
+```rb
+#文字列
+#降順
+ary1 = [ "d", "a", "e", "c", "b" ]
+p ary1.sort.reverse
+p ary1.sort {|a,b| b <=> a }                            
+#=> ["e", "d", "c", "b", "a"]
+
+#文字列では昇順になった
+ary1.sort {|a,b| -a <=> -b }
+#=> ["a", "b", "c", "d", "e"]
+```
+<br>
+<br>
