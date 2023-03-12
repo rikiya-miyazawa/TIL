@@ -51,3 +51,14 @@ array.sort.reverse
 ```
 <br>
 <br>
+
+- 例5  
+```rb
+#文字列
+#昇順
+ary1 = [ "d", "a", "e", "c", "b" ]
+p ary1.sort                             
+#=> ["a", "b", "c", "d", "e"]
+```
+<br>
+<br>
