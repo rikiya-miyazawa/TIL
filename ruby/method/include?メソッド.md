@@ -28,4 +28,13 @@ range.include?(5)
 #=> true
 range.include?(15)  
 #=> false
+
+#ハッシュ
+person = {name: "Alice", age: 30, email: "alice@example.com"}
+person.include?(:name)
+#=> true
+person.include?("name")
+#=> false
+person.include?(:names)
+#=> false
 ```
