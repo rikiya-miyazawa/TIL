@@ -25,3 +25,15 @@ person.key?(:name)
 person.key?(:gender)  
 #=> false
 ```
+<br>
+<br>
+
+- value?メソッド  
+```rb
+#key?のvalueバージョン
+person = {name: "Alice", age: 30, email: "alice@example.com"}
+person.value?(30)    
+#=> true
+person.value?(:31)  
+#=> false
+```
