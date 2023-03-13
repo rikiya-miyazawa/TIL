@@ -20,4 +20,8 @@ hash.key(value)
 person = {name: "Alice", age: 30, email: "alice@example.com"}
 key = person.key("Alice")    
 #=> :name
+
+#value162に対応するkeyは存在しない
+key = person.key(162)
+#=> nil
 ```
