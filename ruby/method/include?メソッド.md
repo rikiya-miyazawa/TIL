@@ -16,6 +16,7 @@ array.include?(obj)
 
 - 例  
 ```rb
+#配列
 fruits = ["apple", "banana", "orange"]
 fruits.include?("apple")   
 #=> true
