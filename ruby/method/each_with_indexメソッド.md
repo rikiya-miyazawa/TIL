@@ -15,4 +15,7 @@ member.each_with_index do |x, y|
  print "#{x} #{y} "
 end
 #=> kikuchi 0 maeda 1 tanaka 2
+
+member.each_with_index { |x, y| print "#{x} #{y} " }
+#=> kikuchi 0 maeda 1 tanaka 2
 ```
