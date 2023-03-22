@@ -13,6 +13,20 @@ Rubyの標準ライブラリの Date クラスや DateTime クラス、 Time ク
 <br>
 <br>
 
+- 例1  
+```rb
+(1..3).each do |i|
+  Book.create(
+    published_on: Time.parse("20230322").ago(i.months),
+  )
+end
+#["published_on","2023-02-22"] 
+#["published_on","2023-01-22"]
+#["published_on", "2022-12-22"]
+```
+<br>
+<br>
+
 - 例2  
 ```rb
 #parseメソッドに不正な引数を渡すとArgumentErrorが発生。
