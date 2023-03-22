@@ -13,4 +13,3 @@
 2.odd? # => false
 3.odd? # => true
 ```
-<br>
