@@ -40,3 +40,15 @@ end
 #`make_time': no time information in "ajdieka" (ArgumentError)
 ```
 <br>
+<br>
+
+- 例3  
+```rb
+require 'date'
+
+date_string = "2023-03-22"
+date = Date.parse(date_string)
+
+puts date # => 2023-03-22
+puts date.class # => Date
+```
