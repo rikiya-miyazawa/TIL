@@ -19,3 +19,9 @@ User.pluck(:name)
 <br>
 <br>
 
+- 例2  
+```rb
+#複数のカラムの指定もできる
+User.pluck(:id, :name) 
+#=> [[1, "Alice"], [2, "Bob"], [3, "Charlie"], ...]
+```
