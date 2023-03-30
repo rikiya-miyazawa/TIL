@@ -61,3 +61,34 @@ irb(main):002:0> book.now_on_sale?
 irb(main):003:0> book.end_of_print?
 => false
  ```
+ <br>
+ <br>
+
+ - enumの値の末尾に「!」月のメソッドを使うと、そのenumの値へ変更できる  
+```
+irb(main):002:0> book.now_on_sale?
+=> true
+irb(main):003:0> book.end_of_print?
+=> false
+irb(main):004:0> book.end_of_print!
+  TRANSACTION (0.1ms)  begin transaction
+  Publisher Load (0.2ms)  SELECT "publishers".* FROM "publishers" WHERE "publishers"."id" = ? LIMIT ?  [["id", 1], ["LIMIT", 1]]
+  Book Update (0.5ms)  UPDATE "books" SET "updated_at" = ?, "sales_status" = ? WHERE "books"."id" = ?  [["updated_at", "2023-03-30 12:21:52.414994"], ["sales_status", 2], ["id", 6]]
+  TRANSACTION (1.0ms)  commit transaction
+=> true
+irb(main):005:0> book
+=> 
+#<Book:0x00007f899cb20de0
+ id: 6,
+ name: "enum Book 3",
+ published_on: nil,
+ price: 100,
+ created_at: Thu, 30 Mar 2023 12:15:12.545901000 UTC +00:00,
+ updated_at: Thu, 30 Mar 2023 12:21:52.414994000 UTC +00:00,
+ publisher_id: 1,
+ sales_status: "end_of_print">
+irb(main):006:0> book.end_of_print?
+=> true
+irb(main):007:0> book.now_on_sale?
+=> false
+```
