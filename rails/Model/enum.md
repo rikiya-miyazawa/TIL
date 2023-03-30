@@ -45,4 +45,19 @@ irb(main):018:0> )
  publisher_id: 1,
  sales_status: "now_on_sale">
  ```
- 
+ <br>
+ <br>
+
+ - ステータスごとに述語メソッドで状態を確認可能  
+ ```
+irb(main):001:0> book = Book.last
+   (0.4ms)  SELECT sqlite_version(*)
+  Book Load (0.1ms)  SELECT "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT ?  [["LIMIT", 1]]
+=> 
+#<Book:0x00007f899cb20de0
+...
+irb(main):002:0> book.now_on_sale?
+=> true
+irb(main):003:0> book.end_of_print?
+=> false
+ ```
