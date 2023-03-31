@@ -96,8 +96,6 @@ irb(main):007:0> book.now_on_sale?
 <br>
 
 - enumで定義したカラムを直接参照すると文字列の値が取得できる  
-<br>
-
 ```
 irb(main):008:0> book.sales_status
 => "end_of_print"
@@ -106,6 +104,7 @@ irb(main):010:0> book.now_on_sale!
 irb(main):011:0> book.sales_status
 => "now_on_sale"
 ```
+<br>
 <br>
 
 - before_type_castメソッドでDBに保存されている実際の値を確認する  
@@ -116,4 +115,12 @@ irb(main):009:0> book.sales_status_before_type_cast
 irb(main):010:0> book.now_on_sale!
 irb(main):012:0> book.sales_status_before_type_cast
 => 1
+```
+<br>
+<br>
+
+- enumで定義したカラム名の複数形メソッドをクラスメソッドとして呼び出して、enumの定義を確認する  
+```
+irb(main):013:0> Book.sales_statuses
+=> {"reservation"=>0, "now_on_sale"=>1, "end_of_print"=>2}
 ```
