@@ -101,4 +101,19 @@ irb(main):007:0> book.now_on_sale?
 ```
 irb(main):008:0> book.sales_status
 => "end_of_print"
+
+irb(main):010:0> book.now_on_sale!
+irb(main):011:0> book.sales_status
+=> "now_on_sale"
+```
+<br>
+
+- before_type_castメソッドでDBに保存されている実際の値を確認する  
+```
+irb(main):009:0> book.sales_status_before_type_cast
+=> 2
+
+irb(main):010:0> book.now_on_sale!
+irb(main):012:0> book.sales_status_before_type_cast
+=> 1
 ```
