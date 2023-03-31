@@ -124,3 +124,9 @@ irb(main):012:0> book.sales_status_before_type_cast
 irb(main):013:0> Book.sales_statuses
 => {"reservation"=>0, "now_on_sale"=>1, "end_of_print"=>2}
 ```
+<br>
+<br>
+
+- enumで定義していない値で保存するとArgumentErrorが発生する  
+<br>
+
