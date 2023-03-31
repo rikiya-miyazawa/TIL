@@ -91,4 +91,14 @@ irb(main):006:0> book.end_of_print?
 => true
 irb(main):007:0> book.now_on_sale?
 => false
+```  
+<br>
+<br>
+
+- enumで定義したカラムを直接参照すると文字列の値が取得できる  
+<br>
+
+```
+irb(main):008:0> book.sales_status
+=> "end_of_print"
 ```
