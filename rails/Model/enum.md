@@ -91,4 +91,87 @@ irb(main):006:0> book.end_of_print?
 => true
 irb(main):007:0> book.now_on_sale?
 => false
+```  
+<br>
+<br>
+
+- enumで定義したカラムを直接参照すると文字列の値が取得できる  
 ```
+irb(main):008:0> book.sales_status
+=> "end_of_print"
+
+irb(main):010:0> book.now_on_sale!
+irb(main):011:0> book.sales_status
+=> "now_on_sale"
+```
+<br>
+<br>
+
+- before_type_castメソッドでDBに保存されている実際の値を確認する  
+```
+irb(main):009:0> book.sales_status_before_type_cast
+=> 2
+
+irb(main):010:0> book.now_on_sale!
+irb(main):012:0> book.sales_status_before_type_cast
+=> 1
+```
+<br>
+<br>
+
+- enumで定義したカラム名の複数形メソッドをクラスメソッドとして呼び出して、enumの定義を確認する  
+```
+irb(main):013:0> Book.sales_statuses
+=> {"reservation"=>0, "now_on_sale"=>1, "end_of_print"=>2}
+```
+<br>
+<br>
+
+- enumで定義していない値で保存するとArgumentErrorが発生する  
+<br>
+
+- enum型の名称で検索するためのscopeも追加される  
+```
+enum名で検索
+
+irb(main):021:0> Book.now_on_sale
+  Book Load (0.2ms)  SELECT "books".* FROM "books" WHERE "books"."sales_status" = ?  [["sales_status", 1]]
+=> 
+[#<Book:0x00007f899cd5e300
+  id: 4,
+  name: "enum Book 1",
+  published_on: nil,
+  price: 100,
+  created_at: Thu, 30 Mar 2023 12:14:10.242010000 UTC +00:00,
+  updated_at: Thu, 30 Mar 2023 12:14:10.242010000 UTC +00:00,
+  publisher_id: 1,
+  sales_status: "now_on_sale">,
+ #<Book:0x00007f899cd5e1e8
+  id: 5,
+  name: "enum Book 2",
+  published_on: nil,
+  price: 100,
+  created_at: Thu, 30 Mar 2023 12:14:49.622769000 UTC +00:00,
+  updated_at: Thu, 30 Mar 2023 12:14:49.622769000 UTC +00:00,
+  publisher_id: 1,
+  sales_status: "now_on_sale">]
+
+
+  該当enum名を含まない検索
+
+  irb(main):020:0> Book.not_now_on_sale
+  Book Load (0.4ms)  SELECT "books".* FROM "books" WHERE "books"."sales_status" != ?  [["sales_status", 1]]
+=> 
+[#<Book:0x00007f8979425e78
+  id: 6,
+  name: "enum Book 3",
+  published_on: nil,
+  price: 100,
+  created_at: Thu, 30 Mar 2023 12:15:12.545901000 UTC +00:00,
+  updated_at: Fri, 31 Mar 2023 08:23:27.253462000 UTC +00:00,
+  publisher_id: 1,
+  sales_status: "end_of_print">]
+```  
+<br>
+<br>
+
