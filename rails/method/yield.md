@@ -33,3 +33,15 @@ def hogehoge( x )             # &proc はない！
  "foo"
  7
 ```
+<br>
+<br>
+
+```rb
+around_action :action_logger, only: [:destroy]
+
+def action_logger
+  logger.info "around-before"
+  yield
+  logger.info "around-after"
+end
+```
