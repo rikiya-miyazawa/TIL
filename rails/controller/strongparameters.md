@@ -17,3 +17,24 @@ def user_params
 end
 #permitにより許可されていないパラメータは無視される
 ```
+<br>
+<br>
+
+```rb
+#StrongParametersの」受け入れ条件を状況によって切り替える
+#管理権限のあるユーザは自分のadmin権限を変更できる
+def update
+  user = current_user
+  user.update(user_params)
+end
+
+private
+
+def user_params
+  if current_user.admin?
+    params.require(:user).permit(:name, :email, :admin)
+  else
+    params.require(:user).permit(:name, :email)
+  end
+end
+```
