@@ -7,3 +7,6 @@ unless age < 20
 end
 #=> 未成年ではありません
 ```
+<br>
+
+- unless文はelseは使えるが、elsifで複数の条件分岐を行うことはできない！
