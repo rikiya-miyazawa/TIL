@@ -14,3 +14,18 @@ end
 ```
 <br>
 
+```rb
+age = 20
+
+case age
+when 10
+  puts "未成年"
+when 20 #ここでcaseの値と一致する
+  puts "成人"
+when 60
+  puts "定年"
+else
+  puts ""
+end
+#=> 成人
+```
