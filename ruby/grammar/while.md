@@ -31,3 +31,36 @@ end
 4回目
 5回目
 ```
+<br>
+
+- break句を使うとそのブロックの処理が行われた時に、強制的に処理を終了できる。
+<br>
+
+```rb
+count = 1
+
+while count <= 5
+  puts "#{count}回目"
+  if count == 1
+    count += 1
+  elsif count == 2
+    count += 1
+  elsif count == 3
+    count += 1
+    break
+  elsif count == 4
+    count += 1
+  elsif count == 5
+    count += 1
+  end
+end
+```
+<br>
+
+```
+#実行結果
+#３回目でループを強制的に抜け出す
+1回目
+2回目
+3回目
+```
