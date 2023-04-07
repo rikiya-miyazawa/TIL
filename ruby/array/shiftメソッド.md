@@ -6,5 +6,5 @@
 names = ["kobayasi", "isikawa", "tanaka", "nakamura", "satou"]
 names.shift
 p names
-["isikawa", "tanaka", "nakamura", "satou"]
+#=> ["isikawa", "tanaka", "nakamura", "satou"]
 ```
