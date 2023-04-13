@@ -15,4 +15,8 @@
   def show
     render :show
   end
+
+  #省略可能
+  def show
+  end
 ```
