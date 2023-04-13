@@ -21,7 +21,7 @@ end
 <br>
 
 ```rb
-#StrongParametersの」受け入れ条件を状況によって切り替える
+#StrongParametersの受け入れ条件を状況によって切り替える
 #管理権限のあるユーザは自分のadmin権限を変更できる
 def update
   user = current_user
