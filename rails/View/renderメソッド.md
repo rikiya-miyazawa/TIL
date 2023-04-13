@@ -32,3 +32,8 @@ def show
   end
 end
 ```
+<br>
+<br>
+
+- 様々な形式のrender  
+`表2.8参照`
