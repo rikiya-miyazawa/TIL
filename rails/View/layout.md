@@ -25,3 +25,23 @@ app/views/layouts/application.html.erb
   </body>
 </html>
 ```
+<br>
+
+```
+<head>などは共通レイアウト化しているので書かなくてOK
+app/views/books/show.html.erb
+
+<h1>書籍の情報</h1>
+<p>
+  <strong>書籍名:</strong>
+  <%= @book.name %>
+</p>
+<p>
+  <strong>価格:</strong>
+  <%= @book.price %>
+</p>
+<p>
+  <strong>発売日:</strong>
+  <%= @book.published_on.to_s %>
+</p>
+```
