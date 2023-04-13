@@ -20,3 +20,15 @@
   def show
   end
 ```
+<br>
+<br>
+
+- JSONやXMLなどその他のフォーマットで表示させることもできる  
+```rb
+def show
+  respond_to do |format|
+    format.html
+    format.json { render json: @book }
+  end
+end
+```
