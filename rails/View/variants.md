@@ -21,3 +21,24 @@ class ApplicationController < ActionController::Base
   end
 end
 ```
+<br>
+<br>
+
+```
+mobileのViewなどは新しく用意する
+app/views/books/show.html+mobile.erb
+
+<h1>書籍の情報(for mobile)</h1>
+<p>
+  <strong>書籍名:</strong>
+  <%= @book.name %>
+</p>
+<p>
+  <strong>価格:</strong>
+  <%= @book.price %>
+</p>
+<p>
+  <strong>発売日:</strong>
+  <%= @book.published_on.to_s %>
+</p>
+```
