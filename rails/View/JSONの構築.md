@@ -1,7 +1,9 @@
 ## JSONの構築  
 <br>
 
-- jbuilder
+- jbuilderのGitHub  
+`https://github.com/rails/jbuilder`
+<br>
 
 - JSONの構築  
 ```
