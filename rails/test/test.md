@@ -23,3 +23,11 @@
 
 - 特定の行を指定
 `bin/rails test test/models/todo_test.rb:5`
+<br>
+<br>
+
+- 特定のテスト名を指定
+`bin/rails test test/models/todo_test.rb -n test_the_truth`
+<br>
+<br>
+
