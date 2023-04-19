@@ -8,3 +8,8 @@
 
 - より詳細なテスト結果の表示  
 `bin/rails test -v`
+<br>
+<br>
+
+- ディレクトリを指定してテストを実行する
+`bin/rails test test/models`
