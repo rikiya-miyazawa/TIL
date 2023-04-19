@@ -21,3 +21,5 @@
 <br>
 <br>
 
+- 特定の行を指定
+`bin/rails test test/models/todo_test.rb:5`
