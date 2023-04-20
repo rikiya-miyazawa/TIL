@@ -16,4 +16,11 @@ str = "abcdefghi123456789"
 str.delete!("c-g3-7")
 puts str
 #=> abhi1289
+
+#削除しないで残す文字を指定することもできる
+#第二引数に残す文字を「^」で指定する
+str = "abcdefgh123456789"
+str.delete!("a-h1-9", "^c-f48")
+puts str
+#=> cdef48
 ```
