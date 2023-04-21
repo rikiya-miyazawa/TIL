@@ -31,3 +31,9 @@
 <br>
 <br>
 
+- 並列度を変更する  
+```rb
+#test/test_helper.rb
+#並列度を1に変更
+parallelize(workers: 1)
+```
