@@ -35,5 +35,12 @@
 ```rb
 #test/test_helper.rb
 #並列度を1に変更
+
+#通常は並列度4 #sleep 3 * 4
+parallelize(workers: :number_of_processors)
+#Finished in 3.341445s
+
+#並列度1に指定すると12sかかる
 parallelize(workers: 1)
+#Finished in 12.251387s
 ```
