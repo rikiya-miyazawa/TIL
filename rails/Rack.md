@@ -14,3 +14,7 @@ Rackを仲介することで、UnicornやPumaといったアプリケーショ�
 <br>
 <br>
 
+- Rackが利用するエントリーポイント用の一般的なファイル名  
+`config.ru`  
+<br>
+<br>
