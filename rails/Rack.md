@@ -30,5 +30,11 @@ use Rack::Runtime
 - Railsで使用しているRackミドルウェアの確認方法  
 `bin/rails middleware`
 <br>
-<br>
 
+```
+Railsにミドルウェアを組み込む場合、
+開発環境のみの使用はconfig/environments/development.rbに追加
+常に使用する場合config/application.rbに追加
+```
+<br>
+<br>
