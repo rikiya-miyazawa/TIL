@@ -26,3 +26,9 @@ use Rack::Runtime
 ```
 <br>
 <br>
+
+- Railsで使用しているRackミドルウェアの確認方法  
+`bin/rails middleware`
+<br>
+<br>
+
