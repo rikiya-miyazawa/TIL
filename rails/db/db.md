@@ -17,3 +17,10 @@ DBの削除を行う
 ```
 DBの作成、テーブルの構築、seedの読み込みを行う
 ```
+<br>
+<br>
+
+- bin/rails db:reset  
+```
+db:dropとdb:setupを連続して実行する
+```
