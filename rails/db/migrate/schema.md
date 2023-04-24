@@ -6,4 +6,5 @@
 <br>
 <br>
 
-- 
+- db:schema:load  
+`読み込むコマンド`
