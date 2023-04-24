@@ -6,3 +6,7 @@
 <br>
 <br>
 
+- bin/rails db:drop  
+```
+DBの削除を行う。
+```
