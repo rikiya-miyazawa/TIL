@@ -38,3 +38,9 @@ Railsにミドルウェアを組み込む場合、
 ```
 <br>
 <br>
+
+- Rackミドルウェアを追加する場所を指定する  
+```rb
+#Rack::ETagの次にUpcaseMiddlewareを追加する
+config.middleware.insert_after Rack::ETag, UpcaseMiddleware
+```
