@@ -8,5 +8,12 @@
 
 - bin/rails db:drop  
 ```
-DBの削除を行う。
+DBの削除を行う
+```
+<br>
+<br>
+
+- bin/rails db:setup  
+```
+DBの作成、テーブルの構築、seedの読み込みを行う
 ```
