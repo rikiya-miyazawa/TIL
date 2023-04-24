@@ -33,3 +33,11 @@ production:
     database: db/production_sub.sqlite3
     migrations_paths: db/sub_migrate
 ```
+<br>
+
+- bin/rails db:create:sub  
+```
+2つのDBを接続する情報を記述したのちに、2つ目のDBとして作成した「sub」だけcreateする
+```
+<br>
+
