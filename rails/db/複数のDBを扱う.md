@@ -37,7 +37,7 @@ production:
 
 - bin/rails db:create:sub  
 ```
-2つのDBを接続する情報を記述したのちに、2つ目のDBとして作成した「sub」だけcreateする
+2つのDBを接続情報を記述したのちに、2つ目のDBとして作成した「sub」だけcreateする
 ```
 <br>
 
