@@ -153,5 +153,10 @@ end
 
 - 多くの場合は読み取りであれば自動的にレプリカDBを参照してほしい場合が多い  
 ```rb
-#
+#config/environments/production.rbにコメントアウトで用意されている
+#コメントアウトを解除する
+#development.rbにもコピーしておく
+config.active_record.database_selector = { delay: 2.seconds }
+config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
+config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 ```
