@@ -40,4 +40,17 @@ production:
 2つのDBを接続情報を記述したのちに、2つ目のDBとして作成した「sub」だけcreateする
 ```
 <br>
+<br>
 
+- establish_connectionを使用して、特定のモデルを特定のDBへ接続する  
+```
+bin/rails g model author name:string --database=sub
+Running via Spring preloader in process 59720
+      invoke  active_record
+      create    db/sub_migrate/20230426065029_create_authors.rb
+      create    app/models/sub_record.rb
+      create    app/models/author.rb
+      invoke    test_unit
+      create      test/models/author_test.rb
+      create      test/fixtures/authors.yml
+```
