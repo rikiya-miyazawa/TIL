@@ -156,6 +156,8 @@ end
 #config/environments/production.rbにコメントアウトで用意されている
 #コメントアウトを解除する
 #development.rbにもコピーしておく
+#この設定を有効にすることでHTTPのPOST PUT DELETE PATCHメソッドでアクセスした場合はプライマリーDBを
+#GETやHEADの場合はレプリカDBを利用する
 config.active_record.database_selector = { delay: 2.seconds }
 config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
 config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
