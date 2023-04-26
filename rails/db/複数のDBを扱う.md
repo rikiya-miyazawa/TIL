@@ -136,3 +136,22 @@ class ApplicationRecord < ActiveRecord::Base
   }
 end
 ```
+<br>
+
+- 接続先ロール名のwritingとreadingという名前は変更することもできる  
+```rb
+#config/application.rb
+module DbSample
+  class Application < Rails::Application
+    config.load_defaults 6.1
+    config.active_record.writing_role = :writable
+    config.active_record.reading_role = :readonly
+  end
+end
+```
+<br>
+
+- 多くの場合は読み取りであれば自動的にレプリカDBを参照してほしい場合が多い  
+```rb
+#
+```
