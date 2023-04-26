@@ -41,6 +41,7 @@ production:
 migrations_paths: db/sub_migrate
 db/sub_migrate/20230426065029_create_authors.rb
 
+bin/rails g model author name:string --database=sub
 Running via Spring preloader in process 59720
       invoke  active_record
       create    db/sub_migrate/20230426065029_create_authors.rb
