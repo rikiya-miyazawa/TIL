@@ -121,3 +121,18 @@ development:
     port: 33062
     replica: true
 ```
+<br>
+
+- connect_toメソッドを利用してロールとデータベース名を指定する  
+```rb
+#データベースへ接続するコネクションを増加させたくない場合
+#ApplicationRecordクラスで設定するなどの工夫をする
+#app/models/application_record.rb
+class ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
+  connects_to database: {
+    writing: :primary,
+    reading: :primary_replica
+  }
+end
+```
