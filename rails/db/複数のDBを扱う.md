@@ -43,14 +43,21 @@ production:
 <br>
 
 - establish_connectionを使用して、特定のモデルを特定のDBへ接続する  
+```rb
+#役割を明確にするためestablish_connectionを指定した抽象クラスを作成
+#そのクラスを継承したモデルクラスを利用する
+#app/models/sub_base.rb
+class SubBase < ApplicationRecord
+  self.abstract_class = true
+  establish_connection :sub
+end
+
+#app/models/author.rb
+class Author < SubBase
+end
 ```
-bin/rails g model author name:string --database=sub
-Running via Spring preloader in process 59720
-      invoke  active_record
-      create    db/sub_migrate/20230426065029_create_authors.rb
-      create    app/models/sub_record.rb
-      create    app/models/author.rb
-      invoke    test_unit
-      create      test/models/author_test.rb
-      create      test/fixtures/authors.yml
-```
+
+<br>
+<br>
+
+- 
