@@ -93,4 +93,31 @@ ActiveRecord::Baseクラスのクラスメソッド。
 書き込みと読み込みの負荷を軽減させるためにそれらのDBを分離する。
 書き込み専用のDBを「プライマリーDB」
 読み込み専用のDBを「レプリカDB」と呼ぶ。
+rails db タスクではreplica: trueの指定で制御できるが、
+アプリケーション内ではどちらのDBへ接続するか明示する必要がある。
+```
+<br>
+<br>
+
+- マスター用とレプリカ用MySQLインスタンスをそれぞれ用意した場合の設定例  
+```yml
+#config/database.yml
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS"){ 5 }%>
+  username: root
+  password:
+  host: 127.0.0.1
+
+development:
+  primary:
+    <<: *default
+    database: db_sample_development
+    port: 33061
+  primary_replica:
+    <<: *default
+    database: db_sample_development
+    port: 33062
+    replica: true
 ```
