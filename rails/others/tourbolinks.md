@@ -13,3 +13,7 @@ Ajaxリクエストで取得したHTMLデータのbodyタグ内を、
 <br>
 
 - あらかじめ不要なことがわかっているなら、インストール時に省くことができる  
+`rails new rails_app --skip-turbolinks`  
+<br>
+<br>
+
