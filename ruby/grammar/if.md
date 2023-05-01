@@ -46,3 +46,24 @@ point *= 5 if day == 1
 p point
 #=> 35
 ```
+<br>
+<br>
+
+- == true や == falseは冗長なので書かない  
+```rb
+s = ""
+# s.empty?の時点でtrueが返ってくるので == trueは無駄
+if s.empty? == true
+  "空文字列です"
+end
+
+n = 123
+#この書き方ではなく
+if n.zero? == false
+  "ゼロではありません"
+end
+#!でtrueをfalseへ変換 unless文でも可
+if !n.zero?
+  "ゼロではありません"
+end
+```
