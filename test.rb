@@ -1,9 +1,6 @@
-def foo(time = Time.now, message = bar)
-  puts "time: #{time}, message: #{message}"
+def point(x, y = x)
+  puts "x=#{x}, y=#{y}"
 end
 
-def bar
-  'BAR'
-end
-
-foo
+point(3)
+point(3, 10)
