@@ -59,4 +59,8 @@ link_to @user.portrait.filename, @user.portrait if @user.portrait.attached?
   <strong>Portrait:</strong>
   <%= image_tag @user.portrait.variant(resize_to_limit:[100, 100]) %>
 </p>
+
+ImageProcessingはlibvipsというライブラリもサポートしている
+ImageMagicほど多彩なことはできないが、メモリ消費量が少なく実行速度が速い
+使う場合はbrew install vipsなどでインストールしconfig/application.rbファイルで設定する
 ```
