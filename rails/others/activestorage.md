@@ -23,6 +23,8 @@ db/schemaにはportraitはカラムとして記載されていないが、別テ
 ```rb
 #app/models/user.rb
 #portrait:attachmentに関する設定が記述されている
+#UserとBlobを1対1で関連づけるという宣言
+#1対多にする場合はhas_manyにする
 class User < ApplicationRecord
   has_one_attached :portrait
 end
@@ -35,6 +37,9 @@ end
 ActiveStorage::Attachment
 ActiveStorage::Blob
 どのモデルに紐づけられた画像もこの二つを利用する
+
+ActiveStorage::Attachmentは主となるモデルとBlobとの中間テーブルに相当するモデル
+ActiveStorage::Blobはアップロードファイルのメタ情報を管理するモデル
 ```
 <br>
 
