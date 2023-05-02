@@ -90,4 +90,10 @@ ActiveStorageを利用した場合、サーバは期限付きのURLを作成し�
 <br>
 <br>
 
-- 
+- ActiveStorageの問題点  
+```
+バルデーションヘルパーの不足
+ActiveStorageはバリデーションに手間がかかる
+cacheの不足
+ActiveStorageの利用者も増えているので今後改善されるのが期待できる
+```
