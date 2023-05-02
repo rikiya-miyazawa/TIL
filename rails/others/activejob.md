@@ -38,4 +38,16 @@ end
 - perfomr_laterメソッド  
 ```
 バックエンドにキューを追加し、非同期実行する
+perform_nowメソッドはその場で同期的に実行する
+```
+<br>
+
+- ジョブを実行するタイミングをタイミングを指示する事もできる  
+```
+setメソッドを使い1分後にジョブを実行する
+AsyncLogJob.set(wait: 1.minute).perform_later
+wait_until引数 実行日時を指定できる
+puriprity引数 ジョブの優先順位を指定する
+queue引数 追加するキューを指定する
+
 ```
