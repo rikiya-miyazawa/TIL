@@ -15,6 +15,8 @@ Rails5.2からRails公式のファイルアップロード機能が加わった
 ```
 portraitという名前のActiveStorageを追加
 portrait:attachment
+db/schemaにはportraitはカラムとして記載されていないが、別テーブルとして管理されている
+めっちゃ簡単にファイルアップロード機能を追加できる！
 ```
 <br>
 
@@ -25,3 +27,15 @@ class User < ApplicationRecord
   has_one_attached :portrait
 end
 ```
+<br>
+<br>
+
+- ActiveStorageの機能は主に２つのモデルで作られている  
+```
+ActiveStorage::Attachment
+ActiveStorage::Blob
+どのモデルに紐づけられた画像もこの二つを利用する
+```
+<br>
+
+- 
