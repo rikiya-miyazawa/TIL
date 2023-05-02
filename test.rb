@@ -1,6 +1,11 @@
-def point(x, y = x)
-  puts "x=#{x}, y=#{y}"
-end
+a = 'hello'
+b = 'hello'
+c = b
 
-point(3)
-point(3, 10)
+def m!(d)
+  p d.upcase!
+end
+m!(c)
+p b
+p c
+p a
