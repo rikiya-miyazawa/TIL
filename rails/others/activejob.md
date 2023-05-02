@@ -49,5 +49,13 @@ AsyncLogJob.set(wait: 1.minute).perform_later
 wait_until引数 実行日時を指定できる
 puriprity引数 ジョブの優先順位を指定する
 queue引数 追加するキューを指定する
+```
+<br>
 
+- Active Jobをバックエンドとつなぐアダプター  
+```
+Sidekiq
+Resque
+Delayed Job
+など
 ```
