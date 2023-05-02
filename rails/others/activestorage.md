@@ -43,4 +43,20 @@ ActiveStorage::Blobはアップロードファイルのメタ情報を管理す�
 ```
 <br>
 
-- 
+- サムネイルを生成する  
+```
+#app/views/users/show.html.erb
+この記述を変更する
+#デフォルト
+<p>
+  <strong>Portrait:</strong>
+  <%= link_to @user.portrait.filename, @user.portrait if @user.portrait.attached? %>
+</p>
+link_to @user.portrait.filename, @user.portrait if @user.portrait.attached?
+
+#100 * 100サイズのサムネイルを生成する
+<p>
+  <strong>Portrait:</strong>
+  <%= image_tag @user.portrait.variant(resize_to_limit:[100, 100]) %>
+</p>
+```
