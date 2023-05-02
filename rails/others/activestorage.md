@@ -64,3 +64,15 @@ ImageProcessingはlibvipsというライブラリもサポートしている
 ImageMagicほど多彩なことはできないが、メモリ消費量が少なく実行速度が速い
 使う場合はbrew install vipsなどでインストールしconfig/application.rbファイルで設定する
 ```
+<br>
+<br>
+
+- ファイルへのアクセス制限  
+```
+ActiveStorageを利用した場合、サーバは期限付きのURLを作成しそこにリダイレクトする
+期限はデフォルトで5分間
+```
+<br>
+<br>
+
+- 
