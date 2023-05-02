@@ -29,3 +29,9 @@ class AsyncLogJob < ApplicationJob
   end
 end
 ```
+<br>
+<br>
+
+- キューとはjobを実行するための順番待ちみたいなもの(先入先出)  
+<br>
+
