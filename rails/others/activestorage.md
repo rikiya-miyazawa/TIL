@@ -75,4 +75,19 @@ ActiveStorageを利用した場合、サーバは期限付きのURLを作成し�
 <br>
 <br>
 
+- ダイレクトアップロード機能  
+```
+アプリケーションサーバを経由せずに、ファイルを直接クラウドにアップロードできる
+アップロードにかかる時間を短縮し、アプリケーションサーバへの負担も減らせる
+
+#direct_upload: trueを追加
+#複数ファイルを同時にダイレクトアップロードしたい場合はさらにmultiple: trueも追加する
+<div class="field">
+  <%= form.label :portrait %>
+  <%= form.file_field :portrait, direct_upload: true %>
+</div>
+```
+<br>
+<br>
+
 - 
