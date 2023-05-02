@@ -12,4 +12,7 @@ end
 ```
 <br>
 
-- unless文はelseは使えるが、elsifで複数の条件分岐を行うことはできない！
+- unless文はelseは使えるが、elsifで複数の条件分岐を行うことはできない！  
+<br>
+
+- 後置ifのように後置unlessもできる
