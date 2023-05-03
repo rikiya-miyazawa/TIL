@@ -20,3 +20,13 @@ Action Mailboxは受信メールを保存するときにActive Storageを
 #config/environments/production.rb
 config.action_mailbox.ingress = :sendgrid
 ```
+<br>
+
+- 外部からのリクエストを認証するためパスワードを設定する  
+```
+bin/rails credentials:editを実行
+設定を追加する
+```
+<br>
+
+- 
