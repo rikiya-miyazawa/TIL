@@ -41,5 +41,18 @@ end
 
 #app/views/user_mailer/welcome.html.erb
 #
+```
+<br>
+<br>
 
+- プレビューで確認できる  
+```rb
+#test/mailers/previews/user_mailer_preview.rb
+class UserMailerPreview < ActionMailer::Preview
+  def welcome
+    UserMailer.with(to: "igarashi@example.com", name: "igaiga").welcome
+  end
+end
+#http://localhost:3000/rails/mailers/user_mailer/welcome.htmlへアクセス
+#メールのプレビューが見れる
 ```
