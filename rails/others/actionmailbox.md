@@ -21,12 +21,23 @@ Action Mailboxは受信メールを保存するときにActive Storageを
 config.action_mailbox.ingress = :sendgrid
 ```
 <br>
+<br>
 
 - 外部からのリクエストを認証するためパスワードを設定する  
 ```
 bin/rails credentials:editを実行
 設定を追加する
 ```
+<br>
+<br>
+
+- SendGridの設定を行う  
+```
+SendGridのParse Webhookという機能を利用する
+ドメインのDSN設定でMXレコードを設定しておく
+Domain Authenticationの設定もする
+```
+<br>
 <br>
 
 - 
