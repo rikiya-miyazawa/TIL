@@ -29,3 +29,41 @@ class AsyncLogJob < ApplicationJob
   end
 end
 ```
+<br>
+<br>
+
+- キューとはjobを実行するための順番待ちみたいなもの(先入先出)  
+<br>
+
+- perfomr_laterメソッド  
+```
+バックエンドにキューを追加し、非同期実行する
+perform_nowメソッドはその場で同期的に実行する
+```
+<br>
+
+- ジョブを実行するタイミングをタイミングを指示する事もできる  
+```
+setメソッドを使い1分後にジョブを実行する
+AsyncLogJob.set(wait: 1.minute).perform_later
+wait_until引数 実行日時を指定できる
+puriprity引数 ジョブの優先順位を指定する
+queue引数 追加するキューを指定する
+```
+<br>
+
+- Active Jobをバックエンドとつなぐアダプター  
+```
+Sidekiq
+Resque
+Delayed Job
+など
+```
+<br>
+
+- ジョブの例外処理  
+```
+ジョブを実行した時に発生した例外をキャッチして対応を変える仕組み
+retry_on ジョブをリトライする
+discard_on ジョブを破棄する
+```
