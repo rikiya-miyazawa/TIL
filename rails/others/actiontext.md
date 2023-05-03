@@ -19,7 +19,13 @@ Wordなどのワープロソフトにおいて標準的な文書ファイルと�
 <br>
 
 - ActionTextをインストール
-`bin/rails action_text:install`  
+```
+bin/rails action_text:install
+ActiveStorageでの画像変換処理で必要なライブラリをインストール
+gem image_processing
+ImageMagick
+```  
+<br>
 <br>
 
 - 
