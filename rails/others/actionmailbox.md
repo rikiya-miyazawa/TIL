@@ -12,6 +12,11 @@ Action Mailboxは受信メールを保存するときにActive Storageを
 <br>
 
 - Action Mailboxのセットアップ  
-```
-bin/rails action_mailbox:install
+`bin/rails action_mailbox:install`  
+<br>
+
+- SendGridを利用する設定をする  
+```rb
+#config/environments/production.rb
+config.action_mailbox.ingress = :sendgrid
 ```

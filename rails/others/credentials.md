@@ -20,5 +20,4 @@ For editors that fork and exit immediately, it's important to pass a wait flag,
 otherwise the credentials will be saved immediately with no chance to edit.
 
 エディターを指定して実行する
-https://k-koh.hatenablog.com/entry/2020/08/17/084319
 ```
