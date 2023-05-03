@@ -11,13 +11,33 @@ Railsのデフォルトのテスティングフレームワークでもある
 ```
 <br>
 
-- minitestを使ったテストコードの基本計  
+- minitestを使ったテストコードの基本形  
 ```rb
+#テストコードが書かれているファイル名はクラス名と合わせる(スネークケース)
 require 'minitest_autorun'
 
 class SampleTest < Minitest::Test #クラス名はTestで始まるか終わる名前にすることが多い
-  def test_sample
-    assert_equal 'RUBY', 'ruby'.upcase
+  def test_sample #minitestはtest_で始まるメソッドを探してそれを実行する
+    assert_equal 'RUBY', 'ruby'.upcase #assert_equal 期待する結果, テスト対象となる値や式
   end
 end
+```
+<br>
+<br>
+
+- minitestの検証メソッド  
+```rb
+#aがbと等しければパスする
+assert_equal b, a
+#aが真であればパスする
+assert a
+#aが偽であればパスする
+refute a
+```
+<br>
+<br>
+
+- 実行結果  
+```
+
 ```
