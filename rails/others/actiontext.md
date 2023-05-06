@@ -28,4 +28,11 @@ ImageMagick
 <br>
 <br>
 
-- 
+- 任意のモデルにリッチテキストを属性として持たせる  
+```rb
+#app/models/message.rb
+#has_rich_text :contentを記述
+class Message < ApplicationRecord
+  has_rich_text :content
+end
+```
