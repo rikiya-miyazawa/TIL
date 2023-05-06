@@ -61,3 +61,11 @@ def message_params
   params.require(:message).permit(:content)
 end
 ```
+<br>
+<br>
+
+- 保存したリッチテキストを表示する  
+```
+app/views/messages/show.html.erb
+<%= @message.content %>
+```
