@@ -27,7 +27,8 @@ class RoomChannel < ApplicationCable::Channel
   #購読は一度に複数のチャネルに対して作ることができる
   def subscribed
     #購読後に「subscribed」メソッドが呼ばれる
-    # stream_from "some_channel"
+    #接続しているクライアントへメッセージを送る時、このストリーム名を利用する
+    steam_from "room_channel"
   end
 
   def unsubscribed
@@ -35,8 +36,12 @@ class RoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def speak
+  def speak(data)
     #クライアントから呼び出された時「speak」メソッドが呼ばれる
+    #クライアントがチャットメッセージを送信した時にサーバサイド側で実行されるメソッド
+    ActionCable.server.broadcast(
+      "room_channel", { message: data["message"] }
+    )
   end
 end
 ```
@@ -59,12 +64,14 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     //サーバからのデータを受信した時
-    // Called when there's incoming data on the websocket for this channel
+    //受け取ったデータをalertで表示する
+    alert(data['message']);
   },
 
-  speak: function() {
+  speak: function(message) {
     //購読しているチャネルであるRoomChannelクラスのspeakメソッドをWebSocket通信経由で呼び出す
-    return this.perform('speak');
+    //performメソッドを使ってメッセージを送信する
+    return this.perform('speak', {message: message});
   }
 });
 ```
