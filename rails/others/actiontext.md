@@ -36,3 +36,28 @@ class Message < ApplicationRecord
   has_rich_text :content
 end
 ```
+<br>
+<br>
+
+- Viewでrich_text_areaヘルパーを利用する  
+```
+app/views/messages/_form.html.erb
+
+<div class="field">
+  <%= form.label :content %>
+  <%= form.rich_text_area :content %>
+<div>
+<div class="actions">
+  <%= form.submit %>
+</div>
+```
+<br>
+<br>
+
+- StrongParameterでcontent属性を許可する  
+```rb
+#app/controllers/messages_controller.rb
+def message_params
+  params.require(:message).permit(:content)
+end
+```
