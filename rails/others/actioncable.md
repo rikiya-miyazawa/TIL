@@ -16,6 +16,7 @@ ActionCable用のファイルを生成するため、generateのchannelサブコ
 bin/rails g channel room speak
 ```
 <br>
+<br>
 
 - 生成されたチャネルのサーバーサイドファイル  
 ```rb
@@ -38,4 +39,32 @@ class RoomChannel < ApplicationCable::Channel
     #クライアントから呼び出された時「speak」メソッドが呼ばれる
   end
 end
+```
+<br>
+
+- クライアントサイドのファイル  
+```js
+//app/javascript/channels/room_channel.js
+//サーバサイドのRoomChannelを購読するための処理が書かれている
+consumer.subscriptions.create("RoomChannel", {
+  connected() {
+    //接続時
+    // Called when the subscription is ready for use on the server
+  },
+
+  disconnected() {
+    //切断時
+    // Called when the subscription has been terminated by the server
+  },
+
+  received(data) {
+    //サーバからのデータを受信した時
+    // Called when there's incoming data on the websocket for this channel
+  },
+
+  speak: function() {
+    //購読しているチャネルであるRoomChannelクラスのspeakメソッドをWebSocket通信経由で呼び出す
+    return this.perform('speak');
+  }
+});
 ```
