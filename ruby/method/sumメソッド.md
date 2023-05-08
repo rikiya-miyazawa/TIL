@@ -18,4 +18,19 @@ numbers.sum(5)  #=> 15  引数の5 + 配列numbersの合計値
 #文字列の連結もできる
 chars = ['a', 'b', 'c']
 chars.sum('')  #=> "abc"
+
+#joinメソッドを使うこともできる
+chars = ['a', 'b', 'c']
+chars.join  #=> "abc"
+
+#引数に区切り文字を指定できる
+#ハイフンで区切る
+chars = ['a', 'b', 'c']
+chars.join('-')  #=> "a-b-c"
+
+#数値が含まれていても暗黙的にto_sメソッドで変換されるから連結できる
+data = ['a', 2, 'b', 3, 'c']
+data.join  #=> "a2b3c"
+
+
 ```
