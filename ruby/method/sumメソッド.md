@@ -32,5 +32,8 @@ chars.join('-')  #=> "a-b-c"
 data = ['a', 2, 'b', 3, 'c']
 data.join  #=> "a2b3c"
 
-
+#単純な要素の連結であればsumよりjoinメソッドを使ったほうがわかりやすい
+#sumは初期値(先頭の文字列)を与えたりブロック内で文字列を加工できる
+chars = ['a', 'b', 'c']
+chars.sum('>') { |c| c.upcase }  #=> ">ABC"
 ```
