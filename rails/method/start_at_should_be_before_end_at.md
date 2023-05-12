@@ -9,8 +9,8 @@ validates :start_at_should_be_before_end_at
   private
 
   def start_at_should_be_before_end_at
-    #start_atカラムとend_atカラムのどちらかのデータがなければ(nil)、このメソッドを抜ける
     #nilチェック
+    #start_atカラムとend_atカラムのどちらかのデータがなければ(nil)、このメソッドを抜ける
     return unless start_at && end_at
 
     if start_at >= end_at
