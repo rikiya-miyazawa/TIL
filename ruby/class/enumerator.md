@@ -1,7 +1,7 @@
 ## Enumeratorクラス  
 <br>
 
-- Enumratorクラス  
+- Enumratorクラス(イニューマレイター)  
 ```
 https://docs.ruby-lang.org/ja/latest/class/Enumerator.html
 each 以外のメソッドにも Enumerable の機能を提供するためのラッパークラス
