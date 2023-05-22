@@ -101,5 +101,20 @@ def show_currency(country)
 end
 
 
+#nilかもしれないオブジェクトに対して安全にメソッドを呼び出したい場合は、&.演算子を使うことができる
+#&.演算子を使ってメソッドを呼び出すと、メソッドを呼び出されたオブジェクトがnilではない場合はその結果を、nilだった場合はnilを返す
+a = 'foo'
+a&.upcase #=> 'FOO'
 
+a = nil
+a.upcase  #=> undefined method `upcase' for nil:NilClass (NoMethodError)
+a&.upcase  #=> nil
+
+
+#&.演算子を用いれば、より簡潔に記述することができる
+def show_currency(country)
+  currency = find_currency(country)
+  #currencyがnilの場合を考慮して、&.演算子でメソッドを呼び出す
+  currency&.upcase
+end
 ```
