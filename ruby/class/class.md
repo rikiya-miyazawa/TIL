@@ -208,3 +208,27 @@ Userクラスが持つ「名前」や「年齢」といったデータも「User
 
 User.new('Alice', 'Ruby', 20)  # ('Alice', 'Ruby', 20)ここの部分を「状態」(ステート)という
 ```
+<br>
+<br>
+
+- 属性(アトリビュート、プロパティ)  
+```rb
+オブジェクトの状態(オブジェクト内の各データ)は外部から取得したり変更したりできる場合がある
+オブジェクトから取得、再設定できる値のことを属性(アトリビュート、プロパティ)と呼ぶ
+
+class User
+  # first_nameのみ外部からの取得、書き換えを許可する
+  attr_accessor :first_name
+
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
+end
+
+user = User.new('Alice', 'Ruby', 20)
+user.first_name  #=> "Alice"  外部から取得できる
+user.first_name = 'アリス'  # 外部から値の変更ができる
+user.first_name  #=> "アリス"
+```
