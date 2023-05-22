@@ -31,4 +31,36 @@ end
 #ハッシュだとタイポした時に気づかなかったり、キーを追加したり、内容を変更できるので
 #データ量が増えるともろくて管理しづらいプログラムになってしまう
 
+# 勝手に新しいキーを追加
+users[0][:country] = 'japan'
+# 勝手にfirst_nameを変更
+users[0][:first_name] = 'Carol'
+# ハッシュの中身が変更される
+users[0]  #=> {:first_name=>"Carol", :last_name=>"Ruby", :age=>20, :country=>"japan"}
+```
+<br>
+
+- 対応するクラスを作る場合  
+```rb
+#Userクラスという新しいデータ型を作り、そこにデータを入れたほうがより堅牢なプログラムになる
+
+class User
+  attr_reader :first_name, :last_name, :age
+
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
+end
+
+#ユーザのデータを作成する
+users = []
+users << { first_name: 'Alice', last_name: 'Ruby', age: 20 }
+users << { first_name: 'Bob', last_name: 'Python', age: 30 }
+
+#氏名を作成するメソッド
+def full_name(user)
+  "#{user.first_name} #{user.last_name}"
+end
 ```
