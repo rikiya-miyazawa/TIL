@@ -78,8 +78,38 @@ users[0].first_mame  #=> undefined method `first_mame' for #<User:0x00007f8d4f1e
 
 # 勝手に属性を追加できない
 users[0].country = 'japan'  #=> undefined method `country=' for #<User:0x00007f8d4f1ef468 @first_name="Alice", @last_name="Ruby", @age=20> (NoMethodError)
-
 # 勝手にfirst_nameを変更できない
 users[0].first_name = 'Carol'  #=> undefined method `first_name=' for #<User:0x00007f8d4f1ef468 @first_name="Alice", @last_name="Ruby", @age=20> (NoMethodError)
 
+#クラスの内部にメソッドを追加することもできる
+class User
+  attr_reader :first_name, :last_name, :age
+
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
+  # 引数を渡す必要がなくなり、クラス外で定義する時よりもシンプルな記述になる
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+end
+
+users = []
+users << User.new('Alice', 'Ruby', 20)
+users << User.new('Bob', 'Python', 30)
+
+users.each do |user|
+  #.full_nameのようにシンプルにクラス内のメソッドを使うことができる
+  puts "氏名: #{user.full_name}、年齢: #{user.age}"
+end
+
+# 氏名: Alice Ruby、年齢: 20
+# 氏名: Bob Python、年齢: 30
+
+クラスは内部にデータを保持し、さらに自分が保持しているデータを利用する独自のメソッドを持つことができる
+データとそのデータに関するメソッドが常にセットになる
+クラスを使わない場合に比べてデータとメソッドの整理がしやすくなる
+大きなプログラムになるほど、データとメソッドを一緒に持ち運べるクラスのメリットが大きくなる
 ```
