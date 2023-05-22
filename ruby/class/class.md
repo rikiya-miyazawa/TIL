@@ -91,8 +91,22 @@ class User
     @age = age
   end
   # 引数を渡す必要がなくなり、クラス外で定義する時よりもシンプルな記述になる
+  # attr_readerは、インスタンス変数に対してゲッターメソッドを自動的に生成するための便利な方法
+  # 目には見えないがattr_readerのおかげで下記のメソッドが定義されているのと同じ状態になっている
+  # def first_name
+  #   @first_name
+  # end
+
+  # def last_name
+  #   @last_name
+  # end
+
+  # def age
+  #   @age
+  # end
+
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"  # attr_readerを使用することでメソッド内でインスタンス変数の値にアクセスすることができる
   end
 end
 
@@ -138,4 +152,37 @@ Rubyではオブジェクトは必ず何らかのクラスに属している
 ```
 <br>
 
-- 
+- オブジェクト、インスタンス、レシーバ  
+```rb
+クラスから様々なオブジェクトが作られる
+同じクラスから作られたオブジェクトは同じ属性やメソッドを持つが、属性の中に保持されるデータ(名前や数値、色など)はオブジェクトによって異なる
+
+class User
+  attr_reader :first_name, :last_name, :age
+
+  def initialize(first_name, last_name, age)
+    @first_name = first_name
+    @last_name = last_name
+    @age = age
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+end
+
+alice = User.new('Alice', 'Ruby', 20)
+bob = User.new('Bob', 'Python', 30)
+#どちらもfull_nameメソッドを持つが、保持しているデータが異なるので戻り値は異なる
+alice.full_name  #=> "Alice Ruby"
+bob.full_name  #=> "Bob Python"
+
+#=> "Alice Ruby"
+#=> "Bob Python"
+のようにクラスをもとにして作られたデータの塊をオブジェクトと呼ぶ
+オブジェクトとインスタンスは同じ意味の別の名前の単語
+
+レシーバ
+メソッドを呼び出された側
+alice.full_name  #この場合はaliceに対して.full_nameメソッドが呼ばれたのでaliceがレシーバ
+```
