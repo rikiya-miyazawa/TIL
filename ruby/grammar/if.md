@@ -67,3 +67,39 @@ if !n.zero?
   "ゼロではありません"
 end
 ```
+<br>
+<br>
+
+- 変数への代入と条件分岐を同時に実現する  
+```rb
+#国名に応じて通貨を返す(該当する通貨がなければnil)
+def find_currency(country)
+  currencies = { japan: 'yen', us: 'dollar', india: 'rupee' }
+  currencies[country]
+end
+
+#指定された国の通貨を大文字にして返す
+def show_currency(country)
+  currency = find_currency(country)
+  #nilでないことをチェック
+  if currency
+    currency.upcase
+  end
+end
+
+show_currency(:japan) #=> "YEN"
+show_currency(:korea) #=> nil
+
+
+#Rubyでは変数への代入自体が戻り値をもつ
+#if文の中で直接変数へ代入することも可能
+def show_currency(country)
+  #値が取得できれば真、できなければ偽
+  if currency = find_currency(country)
+    currency.upcase
+  end
+end
+
+
+
+```
