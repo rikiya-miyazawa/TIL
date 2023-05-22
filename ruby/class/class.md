@@ -186,3 +186,19 @@ bob.full_name  #=> "Bob Python"
 メソッドを呼び出された側
 alice.full_name  #この場合はaliceに対して.full_nameメソッドが呼ばれたのでaliceがレシーバ
 ```
+<br>
+
+- メソッド、メッセージ  
+```rb
+オブジェクトが持つ「動作」や「振る舞い」のことをメソッドという
+何らかの処理をひとまとめにして名前をつけ、何度も再利用できるようにしたものがメソッド
+
+user = User.new('Alice', 'Ruby', 20)
+user.first_name  # userというレシーバに対して、first_nameというメッセージを送っている
+                 # レシーバに対して「first_nameを教えて」とメッセージを送るようなイメージ
+                 # オブジェクト指向では「Smalltark」と呼ばれ、よく使われる呼び方。
+```
+<br>
+<br>
+
+- 
