@@ -256,6 +256,7 @@ User.new
 # この時にinitializeメソッドが呼ばれる
 
 # インスタンスを初期化するために実行したい処理があれば、initializeメソッドでその処理を実装する
+# initializeメソッドが不必要であれば省略も可能
 class User
   def initialize
     puts 'initialized.'
@@ -280,4 +281,17 @@ User.new('Alice', 20)  #=> name: Alice, age: 20
 <br>
 <br>
 
-- 
+- インスタンスメソッドの定義  
+```rb
+# クラス構文の内部で以下のようにメソッドを定義するとインスタンスメソッドになる
+# インスタンスメソッドはそのクラスのインスタンスに対して呼び出すことができるメソッドのこと
+
+class User
+  def hello
+    "Hello!"
+  end
+end
+
+user = User.new
+user.hello  #=> "Hello!"  # Userクラスのインスタンスに対してインスタンスメソッドのhelloを呼び出せた
+```
