@@ -232,3 +232,17 @@ user.first_name  #=> "Alice"  外部から取得できる
 user.first_name = 'アリス'  # 外部から値の変更ができる
 user.first_name  #=> "アリス"
 ```
+<br>
+<br>
+
+- クラス名はキャメルケースで書く  
+```rb
+class User  #必ず大文字始まり
+end
+
+class OrderItem  #キャメルケース
+end
+
+class user  #小文字で始めると構文エラーになる
+end
+```
