@@ -470,4 +470,17 @@ class User
 end
 
 
+# カンマで複数の引数を渡すと、複数のインスタンス変数に対するアクセサメソッドを定義することもできる
+
+class User
+  # @nameと@ageへのアクセサメソッドを定義する
+  attr_accessor :name, :age
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+end
+
+# @name @age ともにクラスの外部から参照、値の変更ができるようになる
 ```
