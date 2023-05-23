@@ -442,4 +442,32 @@ user = User.new('Alice')
 user.name = 'Bob'
 # @nameを参照する
 user.name  #=> "Bob"
+
+
+# インスタンス変数の内容を読み取り専用にしたい場合はattr_readerを使う
+# @nameの参照はできるが値の変更はできない
+
+class User
+  # @nameの読み取り専用のメソッドが自動的に定義される
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+
+# インスタンス変数の内容を書き込み専用にしたい場合はattr_writerを使う
+# @nameの値の変更はできるが参照はできない
+
+class User
+  # @nameへ書き込み専用のメソッドが自動的に定義される
+  attr_writer :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+
 ```
