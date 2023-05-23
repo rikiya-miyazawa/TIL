@@ -415,3 +415,31 @@ user = User.new('Alice')
 user.name = 'Bob'  # 変数に値を代入しているように見えるが、実際は name= メソッドを呼び出し、'Bob'を引数に渡している
 user.name  #=> "Bob"
 ```
+<br>
+<br>
+
+- アクセサメソッド  
+```rb
+# nameメソッドのように値を読み出すメソッドを「ゲッターメソッド」
+# name= メソッドのように値を書き込むメソッドを「セッターメソッド」と呼ぶ
+# 総称して「アクセサメソッド」という
+# 単純にインスタンス変数の内容を外部から読み書きするのであれば、attr_accessorというメソッドを使用できる
+
+class User
+  # @nameを読み書きするメソッドが自動的に定義される
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  # attr_accessorがあれば読み書き用のメソッドを明示的に定義する必要がない
+
+end
+
+user = User.new('Alice')
+# @nameを変更する
+user.name = 'Bob'
+# @nameを参照する
+user.name  #=> "Bob"
+```
