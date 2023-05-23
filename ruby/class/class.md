@@ -358,5 +358,19 @@ user = User.new('Alice')
 user.hello  #=> undefined local variable or method `shuffled_name' for #<User:0x00007fd50898ffc8 @name="Alice"> (NameError)
 
 
+# インスタンス変数は作成(変数に値を代入)する前にいきなり参照してもエラーにはならず、nilが返る
 
+class User
+  def initialize(name)
+    # @name = name
+  end
+
+  def hello
+    # @nameはコメントアウトされているので作成されていない
+    "Hello, I am #{@name}"
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> "Hello, I am "  # nilが返り値が表示されていない
 ```
