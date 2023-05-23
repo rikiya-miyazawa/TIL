@@ -246,3 +246,38 @@ end
 class user  #小文字で始めると構文エラーになる
 end
 ```
+<br>
+<br>
+
+- オブジェクトの作成とinitializeメソッド  
+```rb
+#クラスからオブジェクトを作成する
+User.new
+# この時にinitializeメソッドが呼ばれる
+
+# インスタンスを初期化するために実行したい処理があれば、initializeメソッドでその処理を実装する
+class User
+  def initialize
+    puts 'initialized.'
+  end
+end
+User.new  #=> initialized
+
+# initializeは特殊なメソッドでデフォルトでprivateになっているため外部から呼び出すことができない
+user = User.new
+user.initialize  #=> private method `initialize' called for #<User:0x00007fb8913779d0> (NoMethodError)
+
+
+#initializeメソッドに引数をつけると、newメソッドを呼ぶときにも引数が必要になる
+class User
+  def initialize(name, age)
+    puts "name: #{name}, age: #{age}"
+  end
+end
+User.new  #=> `initialize': wrong number of arguments (given 0, expected 2) (ArgumentError)
+User.new('Alice', 20)  #=> name: Alice, age: 20
+```
+<br>
+<br>
+
+- 
