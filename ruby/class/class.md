@@ -394,5 +394,24 @@ user = User.new('Alice')
 user.name  #=> "Alice"  # nameメソッドを経由して@nameの内容を取得する
 
 
+# インスタンス変数の内容を外部から変更したい場合も変更用のメソッドを定義する
+# Rubyは=で終わるメソッドを定義すると、変数に代入するような形式でそのメソッドを呼び出すことができる
 
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def name  # @nameを外部から参照するためのメソッド
+    @name
+  end
+
+  def name=(value)  # @nameを外部から変更するためのメソッド
+    @name = value
+  end
+end
+
+user = User.new('Alice')
+user.name = 'Bob'  # 変数に値を代入しているように見えるが、実際は name= メソッドを呼び出し、'Bob'を引数に渡している
+user.name  #=> "Bob"
 ```
