@@ -359,6 +359,7 @@ user.hello  #=> undefined local variable or method `shuffled_name' for #<User:0x
 
 
 # インスタンス変数は作成(変数に値を代入)する前にいきなり参照してもエラーにはならず、nilが返る
+# 作成していなくて参照してもエラーにならないということは、タイポしても気づきにくいので気を付ける
 
 class User
   def initialize(name)
@@ -373,4 +374,25 @@ end
 
 user = User.new('Alice')
 user.hello  #=> "Hello, I am "  # nilが返り値が表示されていない
+
+
+# インスタンス変数はクラスの外部から参照することができない
+# もし参照したい場合は参照用のメソッドを作る
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  # @nameを外部から参照するためのメソッド
+  def name
+    @name
+  end
+end
+
+user = User.new('Alice')
+user.name  #=> "Alice"  # nameメソッドを経由して@nameの内容を取得する
+
+
+
 ```
