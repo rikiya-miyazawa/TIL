@@ -317,4 +317,30 @@ end
 
 user = User.new('Alice')
 user.hello  #=> "Hello I am Alice"
+
+
+# メソッドやブロックの内部で宣言(代入)されたローカル変数のスコープは
+# その変数が宣言された位置から自身が宣言されたメソッドまたはブロックの終わりまで
+# メソッドやブロックが繰り返し呼ばれると、その都度新しいローカル変数が作られる
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def hello
+    # shuffled_nameはローカル変数
+    shuffled_name = @name.chars.shuffle.join
+    "Hello, I am #{shuffled_name}."
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> "Hello, I am eiAcl."
+
+
+# ローカル変数は参照する前に必ず=で値を代入して作成する必要がある
+# まだ作成されていないローカル変数を参照しようとするとエラーが発生する
+
+
 ```
