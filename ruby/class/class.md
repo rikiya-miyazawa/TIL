@@ -232,3 +232,255 @@ user.first_name  #=> "Alice"  外部から取得できる
 user.first_name = 'アリス'  # 外部から値の変更ができる
 user.first_name  #=> "アリス"
 ```
+<br>
+<br>
+
+- クラス名はキャメルケースで書く  
+```rb
+class User  #必ず大文字始まり
+end
+
+class OrderItem  #キャメルケース
+end
+
+class user  #小文字で始めると構文エラーになる
+end
+```
+<br>
+<br>
+
+- オブジェクトの作成とinitializeメソッド  
+```rb
+#クラスからオブジェクトを作成する
+User.new
+# この時にinitializeメソッドが呼ばれる
+
+# インスタンスを初期化するために実行したい処理があれば、initializeメソッドでその処理を実装する
+# initializeメソッドが不必要であれば省略も可能
+class User
+  def initialize
+    puts 'initialized.'
+  end
+end
+User.new  #=> initialized
+
+# initializeは特殊なメソッドでデフォルトでprivateになっているため外部から呼び出すことができない
+user = User.new
+user.initialize  #=> private method `initialize' called for #<User:0x00007fb8913779d0> (NoMethodError)
+
+
+#initializeメソッドに引数をつけると、newメソッドを呼ぶときにも引数が必要になる
+class User
+  def initialize(name, age)
+    puts "name: #{name}, age: #{age}"
+  end
+end
+User.new  #=> `initialize': wrong number of arguments (given 0, expected 2) (ArgumentError)
+User.new('Alice', 20)  #=> name: Alice, age: 20
+```
+<br>
+<br>
+
+- インスタンスメソッドの定義  
+```rb
+# クラス構文の内部で以下のようにメソッドを定義するとインスタンスメソッドになる
+# インスタンスメソッドはそのクラスのインスタンスに対して呼び出すことができるメソッドのこと
+
+class User
+  def hello
+    "Hello!"
+  end
+end
+
+user = User.new
+user.hello  #=> "Hello!"  # Userクラスのインスタンスに対してインスタンスメソッドのhelloを呼び出せた
+```
+<br>
+<br>
+
+- インスタンス変数とアクセサメソッド  
+```rb
+# クラスの内部ではインスタンス変数を使うことができる
+# インスタンス変数とは同じインスタンス(同じオブジェクト)の内部で共有される変数
+
+class User
+  # インスタンス作成時に渡された名前をインスタンス変数に保存する
+  def initialize(name)
+    @name = name
+  end
+
+  def hello
+    # インスタンス変数に保存されている名前を表示する
+    "Hello, I am #{@name}"
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> "Hello I am Alice"
+
+
+# メソッドやブロックの内部で宣言(代入)されたローカル変数のスコープは
+# その変数が宣言された位置から自身が宣言されたメソッドまたはブロックの終わりまで
+# メソッドやブロックが繰り返し呼ばれると、その都度新しいローカル変数が作られる
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def hello
+    # shuffled_nameはローカル変数
+    shuffled_name = @name.chars.shuffle.join
+    "Hello, I am #{shuffled_name}."
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> "Hello, I am eiAcl."
+
+
+# ローカル変数は参照する前に必ず=で値を代入して作成する必要がある
+# まだ作成されていないローカル変数を参照しようとするとエラーが発生する
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def hello
+    # shuffled_nameはローカル変数
+    # shuffled_name = @name.chars.shuffle.join  # わざとローカル変数への代入をコメントアウトする
+    "Hello, I am #{shuffled_name}."  # 値を代入せずにいきなりローカル変数を参照する
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> undefined local variable or method `shuffled_name' for #<User:0x00007fd50898ffc8 @name="Alice"> (NameError)
+
+
+# インスタンス変数は作成(変数に値を代入)する前にいきなり参照してもエラーにはならず、nilが返る
+# 作成していなくて参照してもエラーにならないということは、タイポしても気づきにくいので気を付ける
+
+class User
+  def initialize(name)
+    # @name = name
+  end
+
+  def hello
+    # @nameはコメントアウトされているので作成されていない
+    "Hello, I am #{@name}"
+  end
+end
+
+user = User.new('Alice')
+user.hello  #=> "Hello, I am "  # nilが返り値が表示されていない
+
+
+# インスタンス変数はクラスの外部から参照することができない
+# もし参照したい場合は参照用のメソッドを作る
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  # @nameを外部から参照するためのメソッド
+  def name
+    @name
+  end
+end
+
+user = User.new('Alice')
+user.name  #=> "Alice"  # nameメソッドを経由して@nameの内容を取得する
+
+
+# インスタンス変数の内容を外部から変更したい場合も変更用のメソッドを定義する
+# Rubyは=で終わるメソッドを定義すると、変数に代入するような形式でそのメソッドを呼び出すことができる
+
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def name  # @nameを外部から参照するためのメソッド
+    @name
+  end
+
+  def name=(value)  # @nameを外部から変更するためのメソッド
+    @name = value
+  end
+end
+
+user = User.new('Alice')
+user.name = 'Bob'  # 変数に値を代入しているように見えるが、実際は name= メソッドを呼び出し、'Bob'を引数に渡している
+user.name  #=> "Bob"
+```
+<br>
+<br>
+
+- アクセサメソッド  
+```rb
+# nameメソッドのように値を読み出すメソッドを「ゲッターメソッド」
+# name= メソッドのように値を書き込むメソッドを「セッターメソッド」と呼ぶ
+# 総称して「アクセサメソッド」という
+# 単純にインスタンス変数の内容を外部から読み書きするのであれば、attr_accessorというメソッドを使用できる
+
+class User
+  # @nameを読み書きするメソッドが自動的に定義される
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  # attr_accessorがあれば読み書き用のメソッドを明示的に定義する必要がない
+
+end
+
+user = User.new('Alice')
+# @nameを変更する
+user.name = 'Bob'
+# @nameを参照する
+user.name  #=> "Bob"
+
+
+# インスタンス変数の内容を読み取り専用にしたい場合はattr_readerを使う
+# @nameの参照はできるが値の変更はできない
+
+class User
+  # @nameの読み取り専用のメソッドが自動的に定義される
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+
+# インスタンス変数の内容を書き込み専用にしたい場合はattr_writerを使う
+# @nameの値の変更はできるが参照はできない
+
+class User
+  # @nameへ書き込み専用のメソッドが自動的に定義される
+  attr_writer :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+
+# カンマで複数の引数を渡すと、複数のインスタンス変数に対するアクセサメソッドを定義することもできる
+
+class User
+  # @nameと@ageへのアクセサメソッドを定義する
+  attr_accessor :name, :age
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+end
+
+# @name @age ともにクラスの外部から参照、値の変更ができるようになる
+```
