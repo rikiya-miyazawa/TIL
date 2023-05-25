@@ -512,5 +512,34 @@ end
 # クラスメソッドの呼び出し方
 クラス名.メソッド名
 
+# 名前の配列を渡すと、Userクラスのインスタンスを配列に入れて返す
+# クラスメソッド create_usersメソッドを定義
 
+class User
+  def initialize(name)
+    @name = name
+  end
+
+  def self.create_users(names)  # self.がついているのでクラスメソッド
+    names.map do |name|
+      User.new(name)
+    end
+  end
+
+  def hello  # インスタンスメソッド
+    "Hello, I am #{@name}"
+  end
+end
+
+names = ['Alice', 'Bob', 'Carol']
+#クラスメソッドの呼び出し
+users = User.create_users(names)
+
+users.each do |user|
+  # インスタンスメソッドの呼び出し
+  puts user.hello
+end
+#=> Hello, I am Alice
+#=> Hello, I am Bob                                                                  
+#=> Hello, I am Carol 
 ```
