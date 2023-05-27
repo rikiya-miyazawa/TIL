@@ -554,4 +554,25 @@ end
 <br>
 <br>
 
-- 
+- 定数  
+```rb
+# クラスの中には定数を定義することもできる
+# デフォルトの価格を0円として定数として定義する
+
+class Product
+  # デフォルト価格を定数として定義する
+  DEFAULT_PRICE = 0
+
+  attr_reader :name, :price
+
+  # 第2引数priceのデフォルト値を定数DEFAULT_PRICE(つまり0)とする
+  def initialize(name, price = DEFAULT_PRICE)
+    @name = name
+    @price = price
+  end
+end
+
+product = Product.new('A free movie')  # 定数でデフォルト値を代入しているので、引数priceの値を省略しても大丈夫
+#=> #<Product:0x00007ff420090d50 @name="A free movie", @price=0>
+product.price  #=> 0
+```
