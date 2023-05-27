@@ -576,3 +576,11 @@ product = Product.new('A free movie')  # 定数でデフォルト値を代入し
 #=> #<Product:0x00007ff420090d50 @name="A free movie", @price=0>
 product.price  #=> 0
 ```
+<br>
+
+- 定数は必ず大文字で始める必要がある  
+```rb
+# 慣習的にアルファベットの大文字と数字、アンダースコアで構成されることが多い
+DEFAULT_PRICE = 0
+UNITS = { m: 1.0, ft: 3.28, in: 39.37 }
+```
