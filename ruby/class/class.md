@@ -584,3 +584,28 @@ product.price  #=> 0
 DEFAULT_PRICE = 0
 UNITS = { m: 1.0, ft: 3.28, in: 39.37 }
 ```
+<br>
+
+- 定数はインスタンスメソッド内でもクラスメソッド内でも同じ方法で参照することができる  
+```rb
+class Product
+  DEFAULT_PRICE = 0
+
+  def self.default_price
+    # クラスメソッドから定数を参照する
+    DEFAULT_PRICE
+  end
+
+  def default_price
+    # インスタンスメソッドから定数を参照する
+    DEFAULT_PRICE
+  end
+end
+
+# クラスメソッド
+Product.default_price  #=> 0
+
+# インスタンスメソッド
+product = Product.new
+product.default_price  #=> 0
+```
