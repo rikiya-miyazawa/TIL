@@ -543,3 +543,69 @@ end
 #=> Hello, I am Bob                                                                  
 #=> Hello, I am Carol 
 ```
+<br>
+<br>
+
+- メソッド名の表記について  
+```
+インスタンスメソッドの表記 -> "クラス名#メソッド名"  例:String#to_i -> Stringクラスのto_iというインスタンスメソッド
+クラスメソッドの表記 -> "クラス名.メソッド名" (または"クラス名::メソッド名")  例:File.exist? または(File::exist?) -> Fileクラスのexist?というクラスメソッド
+```
+<br>
+<br>
+
+- 定数  
+```rb
+# クラスの中には定数を定義することもできる
+# デフォルトの価格を0円として定数として定義する
+
+class Product
+  # デフォルト価格を定数として定義する
+  DEFAULT_PRICE = 0
+
+  attr_reader :name, :price
+
+  # 第2引数priceのデフォルト値を定数DEFAULT_PRICE(つまり0)とする
+  def initialize(name, price = DEFAULT_PRICE)
+    @name = name
+    @price = price
+  end
+end
+
+product = Product.new('A free movie')  # 定数でデフォルト値を代入しているので、引数priceの値を省略しても大丈夫
+#=> #<Product:0x00007ff420090d50 @name="A free movie", @price=0>
+product.price  #=> 0
+```
+<br>
+
+- 定数は必ず大文字で始める必要がある  
+```rb
+# 慣習的にアルファベットの大文字と数字、アンダースコアで構成されることが多い
+DEFAULT_PRICE = 0
+UNITS = { m: 1.0, ft: 3.28, in: 39.37 }
+```
+<br>
+
+- 定数はインスタンスメソッド内でもクラスメソッド内でも同じ方法で参照することができる  
+```rb
+class Product
+  DEFAULT_PRICE = 0
+
+  def self.default_price
+    # クラスメソッドから定数を参照する
+    DEFAULT_PRICE
+  end
+
+  def default_price
+    # インスタンスメソッドから定数を参照する
+    DEFAULT_PRICE
+  end
+end
+
+# クラスメソッド
+Product.default_price  #=> 0
+
+# インスタンスメソッド
+product = Product.new
+product.default_price  #=> 0
+```

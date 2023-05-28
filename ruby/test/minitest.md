@@ -8,6 +8,8 @@ Railsのデフォルトのテスティングフレームワークでもある
 1.テスティングフレームワークのルールにそってテストコードを書く
 2.上記1で作ったテストコードを実行する
 3.テスティングフレームワークが実行結果をチェックし、その結果が正しいか間違っているかを報告する
+
+minitest実行時のエラー回避オプションコマンド  --no-plugins
 ```
 <br>
 
@@ -96,4 +98,42 @@ end
 
 # Finished in 0.000835s, 1197.6047 runs/s, 8383.2328 assertions/s.
 # 1 runs, 7 assertions, 0 failures, 0 errors, 0 skips
+```
+<br>
+<br>
+
+- setupメソッド  
+```rb
+# テストメソッドの実行前に毎回setupメソッドが呼び出される
+
+class GateTest < Minitest::Test
+  # setupメソッドはテストメソッドの実行前に必ず毎回呼び出される
+  def setup
+    @umeda = Gate.new(:umeda)
+    @juso = Gate.new(:juso)
+    @mikuni = Gate.new(:mikuni)
+  end
+
+  # シナリオ１
+  # 160円の切符を購入する
+  # 梅田で入場し、十三で出場する
+  # 期待する結果 : 出場できる
+  def test_umeda_to_juso
+    ticket = Ticket.new(160)
+    @umeda.enter(ticket)
+    assert @juso.exit(ticket)
+  end
+
+  # シナリオ２
+  # 運賃が足りているかを判別する
+  # 160円の切符を購入する
+  # 梅田で入場し、三国で出場する
+  # 期待する結果 : 出場できない (運賃不足 : 梅田 ⇄ 三国 運賃190円)
+
+  def test_umeda_to_mikuni_when_fare_is_not_enough
+    ticket = Ticket.new(160)
+    @umeda.enter(ticket)
+    refute @mikuni.exit(ticket)
+  end
+end
 ```
