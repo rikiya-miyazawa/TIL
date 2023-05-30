@@ -76,6 +76,8 @@ user = User.new('Alice')
 # 'Bob'にリネームできていない
 user.rename_to_bob  #=> "Bob"
 user.name  #=> "Alice"
+# nameというローカル変数に"Bobという文字列を代入した"と解釈されてリネームできなかった
+# なのでname= のようなセッターメソッドを呼び出したい場合は必ずselfをつける必要がある
 
 
 # 'Carol'にリネーム
