@@ -89,3 +89,27 @@ user.name  #=> "Carol"
 user.rename_to_dave  #=> "Dave"
 user.name  #=> "Dave"
 ```
+<br>
+<br>
+
+- クラスメソッドの内部やクラス構文直下のself  
+```rb
+# クラス定義内に登場するselfは場所によって「インスタンス自身」や「クラス自身」を表したりする
+
+class Foo
+  # このputsはクラス定義の読み込み時に呼び出される
+  puts "クラス構文直下のself: #{self}"
+
+  def self.bar
+    puts "クラスメソッド内のself: #{self}"
+  end
+
+  def baz
+    puts "インスタンスメソッド内のself: #{self}"
+  end
+end
+
+#=> クラス構文直下のself: Foo
+
+
+```
