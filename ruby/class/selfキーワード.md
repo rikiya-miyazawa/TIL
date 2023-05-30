@@ -144,3 +144,21 @@ foo = Foo.new
 foo.baz  #=> undefined method `bar' for #<Foo:0x00007fc23e950e18> (NoMethodError)
          # Did you mean?  baz
 ```
+<br>
+<br>
+
+- クラス構文の直下ではクラスメソッドを呼び出すことができる
+```rb
+class Foo
+# この時点ではクラスメソッドbarが定義されていないので呼び出せない
+# self.bar  => (NoMethodError)
+
+  def self.bar
+    puts "hello!"
+  end
+
+  self.bar
+end
+
+#=> hello!
+```
