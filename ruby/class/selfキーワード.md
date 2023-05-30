@@ -108,8 +108,13 @@ class Foo
     puts "インスタンスメソッド内のself: #{self}"
   end
 end
-
 #=> クラス構文直下のself: Foo
 
+# Fooクラス自身
+Foo.bar  #=> クラスメソッド内のself: Foo
 
+# Fooクラスのインスタンス自身
+foo = Foo.new
+foo.baz  #=> インスタンスメソッド内のself: #<Foo:0x00007ff23a13de70>
 ```
+
