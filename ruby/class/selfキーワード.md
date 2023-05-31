@@ -89,3 +89,76 @@ user.name  #=> "Carol"
 user.rename_to_dave  #=> "Dave"
 user.name  #=> "Dave"
 ```
+<br>
+<br>
+
+- クラスメソッドの内部やクラス構文直下のself  
+```rb
+# クラス定義内に登場するselfは場所によって「インスタンス自身」や「クラス自身」を表したりする
+
+class Foo
+  # このputsはクラス定義の読み込み時に呼び出される
+  puts "クラス構文直下のself: #{self}"
+
+  def self.bar
+    puts "クラスメソッド内のself: #{self}"
+  end
+
+  def baz
+    puts "インスタンスメソッド内のself: #{self}"
+  end
+end
+#=> クラス構文直下のself: Foo
+
+# Fooクラス自身
+Foo.bar  #=> クラスメソッド内のself: Foo
+
+# Fooクラスのインスタンス自身
+foo = Foo.new
+foo.baz  #=> インスタンスメソッド内のself: #<Foo:0x00007ff23a13de70>
+```
+<br>
+<br>
+
+- selfが「インスタンス自身」や「クラス自身」で異なる場合の呼び出しでエラーになるケース  
+```rb
+class Foo
+  # クラスメソッドbar
+  def self.bar
+    # クラスメソッドbarの中でインスタンスメソッドbazを呼び出す
+    self.baz
+  end
+
+  # インスタンスメソッドbaz
+  def baz
+    # インスタンスメソッドbazの中でクラスメソッドbarを呼び出す
+    self.bar
+  end
+end
+
+# selfが異なるためクラスメソッドbarの中でインスタンスメソッドbazは呼ぶ出せない
+Foo.bar  #=> undefined method `baz' for Foo:Class (NoMethodError)
+         # Did you mean?  bar 
+
+foo = Foo.new
+foo.baz  #=> undefined method `bar' for #<Foo:0x00007fc23e950e18> (NoMethodError)
+         # Did you mean?  baz
+```
+<br>
+<br>
+
+- クラス構文の直下ではクラスメソッドを呼び出すことができる
+```rb
+class Foo
+# この時点ではクラスメソッドbarが定義されていないので呼び出せない
+# self.bar  => (NoMethodError)
+
+  def self.bar
+    puts "hello!"
+  end
+
+  self.bar
+end
+
+#=> hello!
+```
