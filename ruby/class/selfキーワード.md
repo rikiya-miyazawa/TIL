@@ -162,3 +162,33 @@ end
 
 #=> hello!
 ```
+<br>
+<br>
+
+- クラスメソッドをインスタンスメソッドで呼び出す  
+```rb
+クラス名.メソッド名
+
+class Product
+  attr_reader :name, :price
+
+  def initialize(name, price)
+    @name = name
+    @price = price
+  end
+
+  # 金額を整形するクラスメソッド
+  def self.format_price(price)
+    "#{price}円"
+  end
+
+  def to_s
+    # インスタンスメソッドからクラスメソッドを呼び出す
+    formatted_price = Product.format_price(price)
+    "name: #{name}, price: #{formatted_price}"
+  end
+end
+
+product = Product.new("ice", 150)
+product.to_s  #=> "name: ice, price: 150円"
+```
